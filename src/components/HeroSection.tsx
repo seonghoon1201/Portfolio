@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, Github, Mail } from 'lucide-react';
 import Image from 'next/image';
 
 export default function HeroSection() {
@@ -35,14 +35,23 @@ export default function HeroSection() {
             }`}
           >
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-balance">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-balance leading-tight">
                 안녕하세요, <br />
-                <span className="text-primary">프론트엔드 개발자</span> <br />
+                <span className="text-primary">
+                  프론트엔드 개발자 & 웹 기획자
+                </span>{' '}
+                <br />
                 정성훈입니다
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground text-pretty max-w-2xl">
-                사용자 경험을 중시하는 프론트엔드 개발자로, React와 Next.js를
-                활용한 현대적인 웹 애플리케이션 개발에 열정을 가지고 있습니다.
+                사용자가 마주하는 인터페이스를 직접 구현하면서도, 서비스의
+                흐름과 경험을 기획하는 일에 열정을 가지고 있습니다. <br />
+                React·Next.js 기반의 웹 애플리케이션 개발 역량과 함께, 사용자
+                여정 설계·와이어프레임 작성·UX 개선 경험을 통해{' '}
+                <span className="font-medium">
+                  개발과 기획을 모두 아우르는 메이커
+                </span>
+                로 성장하고 있습니다.
               </p>
             </div>
 
@@ -79,21 +88,6 @@ export default function HeroSection() {
                   <Github className="h-5 w-5" />
                 </a>
               </Button>
-
-              {/* <Button
-                asChild
-                variant="ghost"
-                size="icon"
-                className="hover:text-primary"
-              >
-                <a
-                  href="https://linkedin.com/in/your-profile"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </a>
-              </Button> */}
 
               <Button
                 asChild
