@@ -34,25 +34,26 @@ export default function ProjectsSection() {
 
   const projects = [
     {
-      title: '등산 도우미 어플',
+      title: '등산 도우미 어플 Hiking Planner',
       description:
         'React Native를 이용한 등산 도우미 어플입니다. 등산로 실시간 트래킹, SOS 기능, 실시간 등산로 이상 신고 기능, 날씨 정보, 커뮤니티 등의 기능을 제공합니다.',
       image: '/Hiking_Planner_logo.png',
       technologies: ['Next.js', 'React Native', 'Bootstrap CSS'],
       github: 'https://github.com/Hiking-Planner',
-      demo: 'https://hiking-app-demo.vercel.app',
+      readme:
+        'https://github.com/Hiking-Planner/.github/blob/main/profile/README.md',
     },
     {
-      title: '동아리 홈페이지',
+      title: '동아리 홈페이지 DKUAC',
       description:
         '제가 회장으로 있던 단국대학교 산악부의 보다 편한 운영을 위해 만든 React 기반의 홈페이지입니다. 암벽화 실시간 대여 시스템, 동아리 활동 기록 커뮤니티 등의 기능을 제공합니다.',
       image: '/DKUAC_logo.png',
       technologies: ['React', 'JavaScript', 'Tailwind CSS'],
       github: 'https://github.com/DKUAC',
-      demo: 'https://dkuac.vercel.app',
+      readme: 'https://github.com/DKUAC/.github/blob/main/profile/README.md',
     },
     {
-      title: '주택 청약 도우미 어플',
+      title: '주택 청약 도우미 어플 ZIBI',
       description:
         '주택 청약 통장의 가입률은 높지만, 실제 청약 신청률은 낮다는 점에 착안하여 개발한 Vue 기반의 주택 청약 도우미 웹앱입니다. 청약 일정 알림, 청약 가점 계산기, 청약 정보 제공 등의 기능을 제공하여 기존 청약 사용자 및 신규 청약 사용자 모두에게 유용한 앱입니다.',
       image: '/zibi_logo.png',
@@ -65,10 +66,10 @@ export default function ProjectsSection() {
         'Ant Design',
       ],
       github: 'https://github.com/PJT-16-3',
-      demo: 'https://zibi.vercel.app',
+      readme: 'https://github.com/PJT-16-3/.github/blob/main/profile/README.md',
     },
     {
-      title: '여행 계획 어플',
+      title: '여행 계획 어플 여담',
       description:
         'Tour API 공모전에 제출한 React기반의 여행 계획 웹앱입니다. AI를 이용한 여행 일정 자동 최적화 및 생성, 장바구니, 여행 일기 커뮤니티 등의 기능을 제공합니다.',
       image: '/yeodam.png',
@@ -81,7 +82,9 @@ export default function ProjectsSection() {
         'Ant Design',
       ],
       github: 'https://github.com/YeoDamHuman',
-      demo: 'https://travel-app.vercel.app',
+      readme:
+        'https://github.com/YeoDamHuman/.github/blob/main/profile/README.md',
+      status: '개발 중',
     },
   ];
 
@@ -125,9 +128,16 @@ export default function ProjectsSection() {
 
               {/* 프로젝트 설명 */}
               <CardHeader>
-                <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                  {project.title}
-                </CardTitle>
+                <div className="flex items-center gap-2">
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                    {project.title}
+                  </CardTitle>
+                  {project.status && (
+                    <Badge variant="secondary" className="text-xs">
+                      {project.status}
+                    </Badge>
+                  )}
+                </div>
                 <CardDescription className="text-pretty">
                   {project.description}
                 </CardDescription>
@@ -160,15 +170,16 @@ export default function ProjectsSection() {
                       GitHub
                     </a>
                   </Button>
+                  {/* ✅ Demo 대신 README 버튼 */}
                   <Button asChild size="sm" className="flex-1">
                     <a
-                      href={project.demo}
+                      href={project.readme}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center"
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
-                      Demo
+                      README
                     </a>
                   </Button>
                 </div>

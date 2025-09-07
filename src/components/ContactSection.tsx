@@ -181,7 +181,12 @@ export default function ContactSection() {
                 />
               </div>
 
-              <Button className="w-full">메시지 보내기</Button>
+              {/* 메시지 보내기 버튼 */}
+              <Button className="w-full" asChild>
+                <a href="mailto:hooni7007@naver.com?subject=문의 제목&body=안녕하세요, 성훈님!">
+                  메시지 보내기
+                </a>
+              </Button>
             </CardContent>
           </Card>
         </div>
