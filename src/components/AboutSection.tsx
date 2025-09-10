@@ -111,7 +111,7 @@ export default function AboutSection() {
             <div className="relative w-80 h-80 rounded-2xl overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20" />
               <Image
-                src="/profile.jpg"
+                src="/profile2.jpg"
                 alt="About Me 프로필 이미지"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
