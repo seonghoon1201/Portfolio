@@ -16,18 +16,15 @@ export default function AboutSection() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
+    const io = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && setIsVisible(true),
       { threshold: 0.1 }
     );
-    const element = document.getElementById('about');
-    if (element) observer.observe(element);
-    return () => observer.disconnect();
+    const el = document.getElementById('about');
+    if (el) io.observe(el);
+    return () => io.disconnect();
   }, []);
 
-  // 프론트엔드 + 웹 기획 + UI/UX 기획 역량을 모두 드러내는 포인트
   const features = [
     {
       icon: Code,
@@ -67,16 +64,16 @@ export default function AboutSection() {
   return (
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
+        {/* 헤더 */}
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`text-center mb-10 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-balance">
             About Me
           </h2>
 
-          {/* 역할 배지: 세 역할을 명확히 어필 */}
           <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
             <span className="px-3 py-1 rounded-full border text-sm">
               Frontend Developer
@@ -99,90 +96,103 @@ export default function AboutSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Profile Image */}
-          <div
-            className={`flex justify-center transition-all duration-1000 delay-200 ${
+        {/* 메인 카드: 이미지 패널 | 콘텐츠 패널 */}
+        <div
+          className={`
+            relative overflow-hidden rounded-3xl border bg-card/60 backdrop-blur
+            shadow-sm
+            transition-all duration-700
+            ${
               isVisible
-                ? 'opacity-100 translate-x-0'
-                : 'opacity-0 -translate-x-10'
-            }`}
-          >
-            <div className="relative w-80 h-80 rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20" />
-              <Image
-                src="/profile2.jpg"
-                alt="About Me 프로필 이미지"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-6'
+            }
+          `}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-5">
+            {/* 좌측: 이미지 패널 (카드 안에서만 고정, 높이 맞춤) */}
+            <aside className="relative lg:col-span-2">
+              {/* 장식 배경 */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-secondary/15" />
+              <div className="relative p-8 sm:p-10 h-full flex items-center justify-center">
+                <div className="relative aspect-square w-56 sm:w-64 md:w-72 lg:w-80 xl:w-[26rem] rounded-2xl overflow-hidden ring-1 ring-border/50 shadow-lg">
+                  <Image
+                    src="/profile2.jpg"
+                    alt="About Me 프로필 이미지"
+                    fill
+                    sizes="(min-width:1280px) 26rem, (min-width:1024px) 20rem, (min-width:768px) 18rem, 14rem"
+                    priority
+                    className="object-cover"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+                </div>
+              </div>
+            </aside>
+
+            {/* 우측: 콘텐츠 패널 */}
+            <main className="lg:col-span-3 border-t lg:border-t-0 lg:border-l">
+              <div className="p-8 sm:p-10 space-y-8">
+                {/* 소개 문단 */}
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-semibold">
+                    프론트엔드 ↔ 기획, E2E로 연결합니다
+                  </h3>
+
+                  <p className="text-muted-foreground text-pretty">
+                    <span className="font-medium">Frontend</span>:
+                    React·Next.js·TypeScript·Tailwind를 중심으로 접근성과 성능을
+                    고려한 UI를 구현합니다. 재사용 가능한 컴포넌트 설계와 상태
+                    관리, API 연동, 반응형/다크모드, 디자인 시스템 정렬까지
+                    일관되게 맞춥니다.
+                  </p>
+
+                  <p className="text-muted-foreground text-pretty">
+                    <span className="font-medium">Planning & UX</span>: 요구사항
+                    정리 → IA/플로우 → 와이어/프로토타입 → 구현 → 지표 기반
+                    개선의 <span className="font-medium">E2E 사이클</span>을
+                    주도합니다. 문제정의–가설–실험–검증 프레임으로 접근해
+                    전환·이탈·탐색 지표 중심으로 개선을 반복합니다. “의도가
+                    보이는 인터랙션”과 간결한 여정을 우선합니다.
+                  </p>
+                </div>
+
+                {/* 특징 카드들 */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {features.map((f, i) => (
+                    <Card
+                      key={i}
+                      className="h-full border-muted/60 hover:border-primary/40 transition-colors"
+                    >
+                      <CardContent className="p-6">
+                        <f.icon className="h-7 w-7 text-primary mb-3" />
+                        <h4 className="font-semibold mb-2">{f.title}</h4>
+                        <p className="text-sm text-muted-foreground text-pretty">
+                          {f.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+
+                {/* 목표 문장 */}
+                <div className="pt-2">
+                  <p className="text-sm text-muted-foreground">
+                    단기적으로는{' '}
+                    <span className="font-medium">지표 기반 UX 실험</span>을
+                    통해 전환·이탈·탐색 경험을 개선하고, 중장기적으로는{' '}
+                    <span className="font-medium">
+                      여정 전반을 관통하는 서비스 구조
+                    </span>
+                    를 설계하는 프론트엔드 개발자이자 웹/UI·UX 기획자로
+                    성장하겠습니다.
+                  </p>
+                </div>
+              </div>
+            </main>
           </div>
 
-          {/* Content */}
-          <div
-            className={`space-y-8 transition-all duration-1000 delay-400 ${
-              isVisible
-                ? 'opacity-100 translate-x-0'
-                : 'opacity-0 translate-x-10'
-            }`}
-          >
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold">
-                프론트엔드 ↔ 기획, E2E로 연결합니다
-              </h3>
-
-              {/* 프론트엔드 개발자 포인트 */}
-              <p className="text-muted-foreground text-pretty">
-                <span className="font-medium">Frontend</span>:
-                React·Next.js·TypeScript·Tailwind를 중심으로 접근성과 성능을
-                고려한 UI를 구현합니다. 재사용 가능한 컴포넌트 설계와 상태 관리,
-                API 연동, 반응형/다크모드, 디자인 시스템 정렬까지 일관되게
-                맞춥니다.
-              </p>
-
-              {/* 웹/UX 기획자 포인트 */}
-              <p className="text-muted-foreground text-pretty">
-                <span className="font-medium">Planning & UX</span>: 요구사항
-                정리 → IA/플로우 → 와이어/프로토타입 → 구현 → 지표 기반 개선의{' '}
-                <span className="font-medium">E2E 사이클</span>을 주도합니다.
-                문제정의–가설–실험–검증 프레임으로 접근해 전환·이탈·탐색 지표
-                중심으로 개선을 반복합니다. “의도가 보이는 인터랙션”과 간결한
-                여정을 우선합니다.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {features.map((feature, index) => (
-                <Card
-                  key={index}
-                  className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-                >
-                  <CardContent className="p-6">
-                    <feature.icon className="h-8 w-8 text-primary mb-3" />
-                    <h4 className="font-semibold mb-2">{feature.title}</h4>
-                    <p className="text-sm text-muted-foreground text-pretty">
-                      {feature.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            {/* 목표 문장: 세 역할을 모두 엮어 마무리 */}
-            <div className="pt-2">
-              <p className="text-sm text-muted-foreground">
-                단기적으로는{' '}
-                <span className="font-medium">지표 기반 UX 실험</span>을 통해
-                전환·이탈·탐색 경험을 개선하고, 중장기적으로는{' '}
-                <span className="font-medium">
-                  여정 전반을 관통하는 서비스 구조
-                </span>
-                를 설계하는 프론트엔드 개발자이자 웹/UI·UX 기획자로
-                성장하겠습니다.
-              </p>
-            </div>
-          </div>
+          {/* 카드 바깥 그림자 보정용 얕은 테두리 */}
+          <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-border/60" />
         </div>
       </div>
     </section>

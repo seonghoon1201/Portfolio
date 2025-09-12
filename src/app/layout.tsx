@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: '정성훈 - 프론트엔드 개발자 포트폴리오',
   description:
     'React와 Next.js를 전문으로 하는 프론트엔드 개발자 정성훈의 포트폴리오입니다.',
+    icons: {
+    icon: "../../public/profile.jpg",  // public 폴더에 있는 로고 사용
+  },
 };
 
 export default function RootLayout({
