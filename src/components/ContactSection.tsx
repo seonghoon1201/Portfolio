@@ -44,7 +44,6 @@ export default function ContactSection() {
 
   const socialLinks = [
     { icon: Github, title: 'GitHub', href: 'https://github.com/seonghoon1201' },
-    { icon: Linkedin, title: 'LinkedIn', href: '#' },
   ];
 
   const handleCopy = async (text: string) => {
