@@ -39,10 +39,7 @@ export default function SkillsSection() {
     'Pinia',
     'Redux',
     'Ant Design',
-    'ShadCN UI',
-    'Radix UI',
     'Chart.js',
-    'Framer Motion',
   ];
 
   const tools = [
@@ -57,7 +54,6 @@ export default function SkillsSection() {
     'VS Code',
     'IntelliJ',
     'Android Studio',
-    'Xcode',
   ];
 
   return (
