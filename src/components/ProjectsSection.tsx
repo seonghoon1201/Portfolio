@@ -111,6 +111,8 @@ export default function ProjectsSection() {
       technologies: [
         'Vue',
         'JavaScript',
+        'Pinia',
+        'Vite',
         'Tailwind CSS',
         'Chart.js',
         'Lucide Icons',

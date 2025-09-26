@@ -37,7 +37,6 @@ export default function SkillsSection() {
   const libraries = [
     'Zustand',
     'Pinia',
-    'Redux',
     'Ant Design',
     'Chart.js',
   ];
