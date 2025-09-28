@@ -79,6 +79,9 @@ export default function AboutSection() {
               Frontend Developer
             </span>
             <span className="px-3 py-1 rounded-full border text-sm">
+              Service Planner
+            </span>
+            <span className="px-3 py-1 rounded-full border text-sm">
               Web Planner
             </span>
             <span className="px-3 py-1 rounded-full border text-sm">
@@ -87,7 +90,8 @@ export default function AboutSection() {
           </div>
 
           <p className="text-lg text-muted-foreground text-pretty max-w-3xl mx-auto">
-            사용자 경험을 중심에 두고 제품을 설계·구현하는
+            사용자 경험을 중심에 두고 제품을 <br />
+            설계·구현하는
             <span className="font-semibold">
               {' '}
               프론트엔드 & 웹/UX 기획 지향형
@@ -140,7 +144,7 @@ export default function AboutSection() {
 
                   <p className="text-muted-foreground text-pretty">
                     <span className="font-medium">Frontend</span>:
-                    React·Next.js·TypeScript·Tailwind를 중심으로 접근성과 성능을
+                    React·React Native·Next.js·TypeScript·Tailwind를 중심으로 접근성과 성능을
                     고려한 UI를 구현합니다. 재사용 가능한 컴포넌트 설계와 상태
                     관리, API 연동, 반응형/다크모드, 디자인 시스템 정렬까지
                     일관되게 맞춥니다.
@@ -183,7 +187,7 @@ export default function AboutSection() {
                     <span className="font-medium">
                       여정 전반을 관통하는 서비스 구조
                     </span>
-                    를 설계하는 프론트엔드 개발자이자 웹/UI·UX 기획자로
+                    를 설계하는 서비스/웹/UI·UX 기획자이자 프론트엔드 개발자로
                     성장하겠습니다.
                   </p>
                 </div>

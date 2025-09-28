@@ -249,7 +249,7 @@ export default function ProjectsSection() {
       github: 'https://github.com/DKUAC',
       readme: 'https://github.com/DKUAC/.github/blob/main/profile/README.md',
       roleData: {
-        title: 'DKUAC Club Website',
+        title: 'DKUAC 동아리 홈페이지',
         period: '2024.07 – 2024.12', // ⬅ 기간 보강
         summary: '단독 프론트엔드 · 운영/유지보수 · 장비 대여/커뮤니티',
         roles: [
