@@ -90,8 +90,8 @@ export default function AboutSection() {
           </div>
 
           <p className="text-lg text-muted-foreground text-pretty max-w-3xl mx-auto">
-            사용자 경험을 중심에 두고 제품을 <br />
-            설계·구현하는
+            사용자 경험을 중심에 두고 제품을 설계·구현하는
+            <br />
             <span className="font-semibold">
               {' '}
               프론트엔드 & 웹/UX 기획 지향형
@@ -143,10 +143,10 @@ export default function AboutSection() {
                   </h3>
 
                   <p className="text-muted-foreground text-pretty">
-                    <span className="font-medium">Frontend</span>:
-                    React·React Native·Next.js·TypeScript·Tailwind를 중심으로 접근성과 성능을
-                    고려한 UI를 구현합니다. 재사용 가능한 컴포넌트 설계와 상태
-                    관리, API 연동, 반응형/다크모드, 디자인 시스템 정렬까지
+                    <span className="font-medium">Frontend</span>: React·React
+                    Native·Next.js·TypeScript·Tailwind를 중심으로 접근성과
+                    성능을 고려한 UI를 구현합니다. 재사용 가능한 컴포넌트 설계와
+                    상태 관리, API 연동, 반응형/다크모드, 디자인 시스템 정렬까지
                     일관되게 맞춥니다.
                   </p>
 
